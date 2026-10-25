@@ -1,0 +1,26 @@
+name: Build Click Before Frame
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        platform: [win, android64]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install Geode CLI
+        run: cargo install geode-cli --locked
+      - name: Build Mod
+        run: |
+          geode sdk install --version 4.0.0
+          export GEODE_SDK=$HOME/.geode/sdk
+          geode build --platform ${{ matrix.platform }}
+      - name: Upload .geode
+        uses: actions/upload-artifact@v4
+        with:
+          name: Click-Before-Frame-${{ matrix.platform }}-by-Zeer
+          path: build/*.geode
