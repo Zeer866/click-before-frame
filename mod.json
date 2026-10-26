@@ -1,0 +1,45 @@
+{
+	"geode": "5.11.2",
+	"gd": {
+		"android": "2.2081"
+	},
+	"version": "v1.0.0",
+	"id": "zeer866.clickbeforeframe",
+	"name": "Click Before Frame",
+	"developer": "Zeer",
+	"description": "Los toques se aplican en el momento exacto, sin esperar al siguiente fotograma. Solo celular.",
+	"links": {
+		"community": "https://discord.gg/jG7xA6Yh8",
+		"source": "https://github.com/zeer866/click-before-frame"
+	},
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Activar",
+			"description": "Activa o desactiva Click Before Frame.",
+			"default": true
+		},
+		"mode": {
+			"type": "string",
+			"name": "Modo",
+			"description": "Auto: el toque se aplica a mitad del fotograma (se adapta a tus FPS). Manual: usas el tiempo de abajo.",
+			"default": "Auto",
+			"one-of": ["Auto", "Manual"]
+		},
+		"delay": {
+			"type": "float",
+			"name": "Tiempo antes del siguiente fotograma",
+			"description": "Cuánto tiempo antes del siguiente fotograma responde el toque (solo en modo Manual). Se redondea a pasos de física (~4 ms).",
+			"default": 8.0,
+			"min": 0.0,
+			"max": 100.0
+		},
+		"unit": {
+			"type": "string",
+			"name": "Unidad",
+			"description": "Unidad del tiempo de arriba.",
+			"default": "Milisegundos",
+			"one-of": ["Milisegundos", "Segundos"]
+		}
+	}
+}
